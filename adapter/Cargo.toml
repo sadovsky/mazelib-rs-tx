@@ -1,0 +1,15 @@
+[package]
+name = "mazelib-adapter"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+publish = false
+
+[[bin]]
+name = "mazelib-adapter"
+path = "src/main.rs"
+
+[dependencies]
+mazelib = { path = ".." }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

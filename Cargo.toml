@@ -1,0 +1,13 @@
+[package]
+name = "mazelib"
+version = "0.1.0"
+edition = "2021"
+description = "Rust port of mazelib (Python): maze generation, solving and transmutation, bit-compatible with the original's RNG"
+license = "MIT"
+publish = false
+
+[dependencies]
+
+[workspace]
+members = [".", "adapter"]
+default-members = [".", "adapter"]
