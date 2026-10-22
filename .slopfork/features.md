@@ -6,39 +6,39 @@ Status: `todo` → `spec` → `building` → `verified@Lx` (or `deviates` with a
 
 | # | Module / feature | Public surface | Depends on | Level | Status | Level reached | Deviations |
 |---|---|---|---|---|---|---|---|
-| 1 | RNG: Python `random` (MT19937, init_by_array, getrandbits, randrange/randint/choice/shuffle/random) | `rng::PyRandom` | — | L2 | todo | — | |
-| 2 | RNG: NumPy legacy `RandomState` (init_genrand seed, random_interval, shuffle) | `rng::NumpyRandom`, `rng::Rng` | — | L2 | todo | — | |
-| 3 | CPython set iteration order (tuple hash, open addressing, resize, merge) | `pyset::PySet` (internal) | — | L2 | todo | — | |
-| 4 | Grid | `Grid` | — | L1 | todo | — | |
-| 5 | MazeGenAlgo base (`_find_neighbors`, size assert) | `generate::*` helpers | 1,2,4 | L2 | todo | — | |
-| 6 | AldousBroder | `AldousBroder` | 5 | L2 | todo | — | |
-| 7 | BacktrackingGenerator | `BacktrackingGenerator` | 5 | L2 | todo | — | |
-| 8 | BinaryTree | `BinaryTree` | 5 | L2 | todo | — | |
-| 9 | CellularAutomaton | `CellularAutomaton` | 5 | L2 | todo | — | |
-| 10 | Division | `Division` | 5 | L2 | todo | — | |
-| 11 | DungeonRooms | `DungeonRooms` | 3,5 | L2 | todo | — | |
-| 12 | Ellers | `Ellers` | 5 | L2 | todo | — | |
-| 13 | GrowingTree | `GrowingTree` | 5 | L2 | todo | — | |
-| 14 | HuntAndKill | `HuntAndKill` | 5 | L2 | todo | — | |
-| 15 | Kruskal | `Kruskal` | 5 | L2 | todo | — | |
-| 16 | Prims | `Prims` | 3,5 | L2 | todo | — | |
-| 17 | Sidewinder | `Sidewinder` | 5 | L2 | todo | — | |
-| 18 | TrivialMaze | `TrivialMaze` | 5 | L2 | todo | — | |
-| 19 | Wilsons | `Wilsons` | 5 | L2 | todo | — | |
-| 20 | MazeSolveAlgo base (preprocess asserts, neighbors, prune) | `solve::*` helpers | 1,2,4 | L2 | todo | — | |
-| 21 | BacktrackingSolver | `BacktrackingSolver` | 20 | L2 | todo | — | |
-| 22 | Chain | `Chain` | 20 | L2 | todo | — | |
-| 23 | Collision | `Collision` | 20 | L2 | todo | — | |
-| 24 | RandomMouse | `RandomMouse` | 20 | L2 | todo | — | |
-| 25 | ShortestPath | `ShortestPath` | 3,20 | L2 | todo | — | |
-| 26 | ShortestPaths | `ShortestPaths` | 3,20 | L2 | todo | — | |
-| 27 | Tremaux | `Tremaux` | 20 | L2 | todo | — | |
-| 28 | MazeTransmuteAlgo base | `transmute::*` helpers | 1,2,4 | L2 | todo | — | |
-| 29 | CuldeSacFiller | `CuldeSacFiller` | 28 | L2 | todo | — | |
-| 30 | DeadEndFiller | `DeadEndFiller` | 28 | L2 | todo | — | |
-| 31 | Perturbation | `Perturbation` | 3,28 | L2 | todo | — | |
-| 32 | Maze facade (seed, generate, entrances, solve, transmute, tostring, monte carlo) | `Maze` | all | L2 | todo | — | |
-| 33 | Adapter binary | `mazelib-adapter` | 32 | L2 | todo | — | |
+| 1 | RNG: Python `random` (MT19937, init_by_array, getrandbits, randrange/randint/choice/shuffle/random) | `rng::PyRandom` | — | L2 | verified@L2 | L2 | None |
+| 2 | RNG: NumPy legacy `RandomState` (init_genrand seed, random_interval, shuffle) | `rng::NumpyRandom`, `rng::Rng` | — | L2 | verified@L2 | L2 | None |
+| 3 | CPython set iteration order (tuple hash, open addressing, resize, merge) | `pyset::PySet` (internal) | — | L2 | verified@L2 | L2 | None |
+| 4 | Grid | `Grid` | — | L1 | verified@L2 | L2 (every case round-trips grids) | None |
+| 5 | MazeGenAlgo base (`_find_neighbors`, size assert) | `generate::*` helpers | 1,2,4 | L2 | verified@L2 | L2 (+L1) | None |
+| 6 | AldousBroder | `AldousBroder` | 5 | L2 | verified@L2 | L2 (+L1) | None |
+| 7 | BacktrackingGenerator | `BacktrackingGenerator` | 5 | L2 | verified@L2 | L2 (+L1) | None |
+| 8 | BinaryTree | `BinaryTree` | 5 | L2 | verified@L2 | L2 (+L1) | None |
+| 9 | CellularAutomaton | `CellularAutomaton` | 5 | L2 | verified@L2 | L2 (+L1) | None |
+| 10 | Division | `Division` | 5 | L2 | verified@L2 | L2 (+L1) | None |
+| 11 | DungeonRooms | `DungeonRooms` | 3,5 | L2 | verified@L2 | L2 (+L1) | None. (Uses Python `random.shuffle`, not NumPy's, in its own `_find_unblocked_neighbors`; reproduced.) |
+| 12 | Ellers | `Ellers` | 5 | L2 | verified@L2 | L2 (+L1) | Known bug fixed: set ids are `i64`, so mazes needing >127 sets (KNOWN_BUGS `gen/Ellers/v2/h12w17/*`) return a valid perfect maze instead of `OverflowError`. |
+| 13 | GrowingTree | `GrowingTree` | 5 | L2 | verified@L2 | L2 (+L1) | None |
+| 14 | HuntAndKill | `HuntAndKill` | 5 | L2 | verified@L2 | L2 (+L1) | None |
+| 15 | Kruskal | `Kruskal` | 5 | L2 | verified@L2 | L2 (+L1) | None |
+| 16 | Prims | `Prims` | 3,5 | L2 | verified@L2 | L2 (+L1) | None |
+| 17 | Sidewinder | `Sidewinder` | 5 | L2 | verified@L2 | L2 (+L1) | None |
+| 18 | TrivialMaze | `TrivialMaze` | 5 | L2 | verified@L2 | L2 (+L1) | None |
+| 19 | Wilsons | `Wilsons` | 5 | L2 | verified@L2 | L2 (+L1) | None |
+| 20 | MazeSolveAlgo base (preprocess asserts, neighbors, prune) | `solve::*` helpers | 1,2,4 | L2 | verified@L2 | L2 (+L1) | None |
+| 21 | BacktrackingSolver | `BacktrackingSolver` | 20 | L2 | verified@L2 | L2 (+L1) | None |
+| 22 | Chain | `Chain` | 20 | L2 | verified@L2 | L2 (+L1) | None |
+| 23 | Collision | `Collision` | 20 | L2 | verified@L2 | L2 (+L1) | Known bug fixed: where the original raises `TypeError` on a robot collision (mazes with loops; KNOWN_BUGS `solve/Collision/*`), return one BFS shortest path over open squares. |
+| 24 | RandomMouse | `RandomMouse` | 20 | L2 | verified@L2 | L2 (+L1) | None |
+| 25 | ShortestPath | `ShortestPath` | 3,20 | L2 | verified@L2 | L2 (+L1) | None. (Keeps the original's `end_edge = _on_edge(start)` bug.) |
+| 26 | ShortestPaths | `ShortestPaths` | 3,20 | L2 | verified@L2 | L2 (+L1) | None |
+| 27 | Tremaux | `Tremaux` | 20 | L2 | verified@L2 | L2 (+L1) | None |
+| 28 | MazeTransmuteAlgo base | `transmute::*` helpers | 1,2,4 | L2 | verified@L2 | L2 | None |
+| 29 | CuldeSacFiller | `CuldeSacFiller` | 28 | L2 | verified@L2 | L2 (+L1) | None |
+| 30 | DeadEndFiller | `DeadEndFiller` | 28 | L2 | verified@L2 | L2 (+L1) | None. (Keeps the one-dead-end-per-iteration behavior.) |
+| 31 | Perturbation | `Perturbation` | 3,28 | L2 | verified@L2 | L2 (+L1) | None |
+| 32 | Maze facade (seed, generate, entrances, solve, transmute, tostring, monte carlo) | `Maze` | all | L2 | verified@L2 | L2 (+L1) | None |
+| 33 | Adapter binary | `mazelib-adapter` | 32 | L2 | verified@L2 | L2 | None |
 
 ## Cross-cutting decisions
 | Concern | Source behavior | Target strategy |
@@ -54,7 +54,22 @@ Status: `todo` → `spec` → `building` → `verified@Lx` (or `deviates` with a
 ## Source tests (L1)
 | Source test | Target test | Status |
 |---|---|---|
-| test/test_generators.py | tests/generators.rs | todo |
-| test/test_solvers.py | tests/solvers.rs | todo |
-| test/test_transmuters.py | tests/transmuters.rs | todo |
-| test/test_maze.py | tests/maze.rs | todo |
+| test/test_generators.py (21 tests) | tests/generators.rs | ported, passing (+ Ellers >127-sets regression) |
+| test/test_solvers.py (8 tests) | tests/solvers.rs | ported, passing (+ Collision-with-loops regression) |
+| test/test_transmuters.py (3 tests) | tests/transmuters.rs | ported, passing |
+| test/test_maze.py (9 tests) | tests/maze.rs | ported, passing (+ seed-range test) |
+| — | tests/exact.rs | 15 exact-output tests recorded from the original (one per generator + entrances/ShortestPaths) |
+| — | `src/pyset.rs`, `src/rng.rs` unit tests | CPython hash/set-order and RNG spot checks |
+
+## L2 results (goldens, profile `tx`)
+
+| Case set | Exact (compare) | Not compared (`tx: invariant`) | Invariant check |
+|---|---|---|---|
+| rng | 63/63 | 0 | 63/63 |
+| generate | 1564/1564 | 8 (Ellers KNOWN_BUGS) | 1572/1572 |
+| entrances | 200/200 | 0 | 200/200 |
+| solve | 372/372 | 12 (Collision KNOWN_BUGS) | 384/384 |
+| transmute | 120/120 | 0 | 120/120 |
+| tostring | 20/20 | 0 | 20/20 |
+| monte_carlo | 37/37 | 0 | 37/37 |
+| **total** | **2376/2376** | **20** | **2396/2396** |

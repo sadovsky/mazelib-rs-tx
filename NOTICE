@@ -1,0 +1,38 @@
+mazelib-rs-tx
+=============
+
+This is a Rust port (transpilation) of mazelib, a Python library for
+generating and solving mazes:
+
+    https://github.com/john-science/mazelib
+    revision 56cd88294a36746bbd324c2c9f7e4ab26095deb3 (mazelib 0.9.17)
+
+The port was produced by reading and translating the original source, so it
+is a derivative work of mazelib. mazelib's license applies:
+
+MIT License
+
+Copyright (c) [2014] [John Stilley]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Changes from the original: translated to Rust; the random number generators
+(Python's `random`, NumPy's legacy `RandomState`) and CPython's set iteration
+order are reimplemented so that outputs match bit for bit; the two crashes
+listed in the goldens' KNOWN_BUGS.json are fixed (see README.md).

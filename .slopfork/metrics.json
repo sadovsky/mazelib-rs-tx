@@ -1,3 +1,16 @@
 {
-  "started_at": "2026-10-22T22:31:05Z"
+  "started_at": "2026-10-22T22:31:05Z",
+  "finished_at": "2026-10-22T22:56:00Z",
+  "src_loc": 4087,
+  "test_loc": 1099,
+  "loc_method": "non-blank lines; src = src/**/*.rs + adapter/src/*.rs minus inline #[cfg(test)] modules; test = tests/**/*.rs plus those inline modules",
+  "spec_questions": 0,
+  "guard_denials": 0,
+  "cases_exact": 2376,
+  "cases_invariant": 2396,
+  "cases_total": 2396,
+  "deviations": [
+    {"module": "Ellers", "cases": "gen/Ellers/v2/h12w17/s0..s7 (KNOWN_BUGS)", "original": "OverflowError (int8 set ids)", "port": "i64 set ids; returns a valid perfect maze"},
+    {"module": "Collision", "cases": "solve/Collision/{CellularAutomaton6x6,DungeonRooms10x10}/* (12, KNOWN_BUGS)", "original": "TypeError when flood robots collide (mazes with loops)", "port": "returns one BFS shortest path over open squares"}
+  ]
 }
