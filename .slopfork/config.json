@@ -1,0 +1,32 @@
+{
+  "source": {
+    "location": "../mazelib-source",
+    "repo_url": "https://github.com/john-science/mazelib",
+    "revision": "56cd88294a36746bbd324c2c9f7e4ab26095deb3",
+    "license": "MIT",
+    "runnable": null
+  },
+  "target": {
+    "language": "rust",
+    "style": "idiomatic",
+    "src": "src"
+  },
+  "mode": "transpile",
+  "phase": "intake",
+  "sealed_paths": [
+    "../mazelib-rs-tx-dirty",
+    "../mazelib-ts-cr",
+    "../mazelib-rs-cr"
+  ],
+  "unsealed_paths": [
+    "../mazelib-source/README.md",
+    "../mazelib-source/docs"
+  ],
+  "sealed_url_patterns": [
+    "github\\.com/sadovsky/(mazelib-ts-cr|mazelib-rs-cr)",
+    "raw\\.githubusercontent\\.com/sadovsky/(mazelib-ts-cr|mazelib-rs-cr)/"
+  ],
+  "probe_commands": [],
+  "default_level": "L2",
+  "modules": []
+}
