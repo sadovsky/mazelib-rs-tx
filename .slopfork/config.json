@@ -12,7 +12,7 @@
     "src": "src"
   },
   "mode": "transpile",
-  "phase": "intake",
+  "phase": "spec",
   "sealed_paths": [
     "../mazelib-rs-tx-dirty",
     "../mazelib-ts-cr",
