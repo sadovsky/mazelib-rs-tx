@@ -177,8 +177,13 @@ impl DungeonRooms {
         Ok(current)
     }
 
-    /// Open walls until every passage is connected.
-    fn reconnect_maze(&mut self, rng: &mut Rng) -> Result<(), MazeError> {
+    /// The working grid (the last generated maze, or the pre-built grid).
+    pub fn grid(&self) -> &Grid {
+        &self.grid
+    }
+
+    /// Open walls until every passage of the working grid is connected.
+    pub fn reconnect_maze(&mut self, rng: &mut Rng) -> Result<(), MazeError> {
         let passages = find_all_passages(&self.grid, ShuffleWith::Python, rng)?;
         let d = self.dims;
         fix_disjoint_passages(
